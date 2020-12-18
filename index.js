@@ -1,4 +1,5 @@
-let readlineSync = require('readline-sync');
+const readlineSync = require('readline-sync');
+const chalk = require('chalk');
 
 let name = readlineSync.question('whats your name?');//take input
 
@@ -47,16 +48,16 @@ function playQuiz (question, corrAnswer) {
   let answer = readlineSync.question(question);
 
   if (answer === corrAnswer) {
-    console.log('Yes, thats the correct answer.');
+    console.log(chalk.green('Yes, thats the correct answer.'));
     currentScore += 1;
   } else {
-    console.log(`Sorry, thats a wrong answer. The correct answer was "${corrAnswer}".`);
+    console.log(chalk`{rgb(255, 0, 0) Sorry, thats a wrong answer. The correct answer was "${corrAnswer}".}`);
   }
-  console.log(`Your current score is ${currentScore}`)
-  console.log('---------------------------')
+  console.log(`Your current score is ${currentScore}`);
+  console.log('---------------------------');
 }
 //actual execution
-console.log(`Hey ${name} lets start our 'do you know me?' quiz`);
+console.log(chalk`{rgb(10, 100, 200) Hey ${name} lets start our 'do you know me?' quiz.}`);
 
 for (var i = 0; i<quesAnswers.length; i++) {
   playQuiz(quesAnswers[i].question, quesAnswers[i].answer)
