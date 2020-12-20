@@ -39,7 +39,7 @@ const highScoreHolders = [
 function checkHighScore () {
     highScoreHolders.map(obj => {
         if(currentScore > obj.score) {
-            console.log(`You have beaten ${obj.name}'s high score.`);
+            console.log(`You have beaten ${obj.name}'s high score of ${obj.score} points.`);
         }
     })
 }
@@ -53,8 +53,8 @@ function playQuiz (question, corrAnswer) {
   } else {
     console.log(chalk`{rgb(255, 0, 0) Sorry, thats a wrong answer. The correct answer was "${corrAnswer}".}`);
   }
-  console.log(`Your current score is ${currentScore}`);
-  console.log('---------------------------');
+  console.log(`Your current score is ${chalk.black.bgYellow(' '+currentScore+' ')}.`);
+  console.log('------------------------------------------------------');
 }
 //actual execution
 console.log(chalk`{rgb(10, 100, 200) Hey ${name} lets start our 'do you know me?' quiz.}`);
@@ -63,5 +63,5 @@ for (var i = 0; i<quesAnswers.length; i++) {
   playQuiz(quesAnswers[i].question, quesAnswers[i].answer)
 }
 
-console.log(`The quiz is over and you have scored ${currentScore} points.`);
+console.log(`The quiz is over and you have scored ${chalk.black.bgCyan(' ' + currentScore + ' ')} points in total.`);
 checkHighScore();
